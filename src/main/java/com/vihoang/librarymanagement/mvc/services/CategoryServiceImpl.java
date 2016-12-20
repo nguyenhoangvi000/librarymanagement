@@ -32,8 +32,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category saveCategory(Category book) {
-        return bookCategoryRepository.save(book);
+    public Category saveCategory(Category category) {
+        System.out.println(category.getCategoryName());
+        return bookCategoryRepository.save(category);
     }
 
     @Override

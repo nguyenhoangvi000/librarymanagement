@@ -27,6 +27,6 @@ public interface BookService {
 
     public List<Book> findLatest4BookRandom(Pageable pageable);
 
-    public List<Book> findBookByCategory(String categoryID);
+    public List<Book> findBookByCategory(Long categoryID);
 
 }

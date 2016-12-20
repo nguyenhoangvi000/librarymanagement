@@ -19,12 +19,22 @@ public class Book {
 
     private String yearpublic;
 
-    private int status;
+    private Integer status;
 
-    private int image;
+    private Integer image;
+
+    public Book() {
+    }
+
+
+    public Book(String title, Integer quantity, int image) {
+        this.title = title;
+        this.quantity = quantity;
+        this.image = image;
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="callcard",joinColumns = @JoinColumn(name="bookID",referencedColumnName = "bookID"),inverseJoinColumns = @JoinColumn(name = "accountID",referencedColumnName = "accID"))
+    @JoinTable(name = "callcard", joinColumns = @JoinColumn(name = "bookID", referencedColumnName = "bookID"), inverseJoinColumns = @JoinColumn(name = "accountID", referencedColumnName = "accID"))
     private Set<Account> accounts;
 
     private Date date = new Date();
@@ -42,13 +52,20 @@ public class Book {
     @JoinColumn(name = "pubID", referencedColumnName = "pubID")
     private Publisher publisher;
 
-
-    public Category getCategory() {
-        return category;
+    public Long getBookID() {
+        return bookID;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setBookID(Long bookID) {
+        this.bookID = bookID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getQuantity() {
@@ -67,52 +84,28 @@ public class Book {
         this.yearpublic = yearpublic;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public int getImage() {
+    public Integer getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(Integer image) {
         this.image = image;
     }
 
-    public Long getBookID() {
-        return bookID;
+    public Set<Account> getAccounts() {
+        return accounts;
     }
 
-    public void setBookID(Long bookID) {
-        this.bookID = bookID;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public Publisher getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public Date getDate() {
@@ -123,11 +116,19 @@ public class Book {
         this.date = date;
     }
 
-    public Set<Account> getAccounts() {
-        return accounts;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setAccounts(Set<Account> accounts) {
-        this.accounts = accounts;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }

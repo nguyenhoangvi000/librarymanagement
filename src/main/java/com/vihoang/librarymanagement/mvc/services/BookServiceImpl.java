@@ -20,7 +20,7 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
 
     @Autowired
-    public void setProductRepository(BookRepository bookRepository) {
+    public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
@@ -60,7 +60,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> findBookByCategory(String categoryID) {
+    public List<Book> findBookByCategory(Long categoryID) {
         return this.bookRepository.findBooksByCategory(categoryID);
     }
 }

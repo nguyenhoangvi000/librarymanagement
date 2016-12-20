@@ -16,11 +16,11 @@ public class Category {
     @OneToMany(targetEntity = Book.class, mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Book> books;
 
-    public Long getCat() {
+    public Long getCatID() {
         return catID;
     }
 
-    public void setCat(Long catID) {
+    public void setCatID(Long catID) {
         this.catID = catID;
     }
 
@@ -31,7 +31,6 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
 
     public Set<Book> getBooks() {
         return books;

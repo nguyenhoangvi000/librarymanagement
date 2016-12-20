@@ -17,7 +17,7 @@ public class Permission {
     private String perName;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "role_permission", joinColumns = @JoinColumn(name = "permissionID", referencedColumnName = "perID"), inverseJoinColumns = @JoinColumn(name = "accountID", referencedColumnName = "roleID"))
+    @JoinTable(name = "role_permission", joinColumns = @JoinColumn(name = "permissionID", referencedColumnName = "perID"), inverseJoinColumns = @JoinColumn(name = "roleID", referencedColumnName = "roleID"))
     private Set<Role> roles;
 
     public Long getPerID() {

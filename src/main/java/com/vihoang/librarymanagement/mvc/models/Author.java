@@ -11,12 +11,12 @@ import java.util.Set;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long authorID;
 
     private String authorName;
 
-    @OneToMany(targetEntity = Book.class, mappedBy = "author", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Book.class,mappedBy = "author", fetch = FetchType.EAGER)
     private Set<Book> books;
 
     public Long getAuthorID() {
@@ -35,11 +35,12 @@ public class Author {
         this.authorName = authorName;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
+//    public Set<Book> getBooks() {
+//        return books;
+//    }
+//
+//    public void setBooks(Set<Book> books) {
+//        this.books = books;
+//    }
 }

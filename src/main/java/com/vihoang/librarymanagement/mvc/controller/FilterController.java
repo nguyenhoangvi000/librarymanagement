@@ -1,6 +1,7 @@
 package com.vihoang.librarymanagement.mvc.controller;
 
 import com.vihoang.librarymanagement.mvc.services.BookService;
+import com.vihoang.librarymanagement.mvc.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +17,23 @@ public class FilterController {
 
     private BookService bookService;
 
+    private CategoryService categoryService;
+
+    @Autowired
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
     @Autowired
     public void setBookService(BookService bookService) {
         this.bookService = bookService;
     }
-    @RequestMapping(value = "/filter/category={id}",method = RequestMethod.POST)
-    public String filter(@PathVariable String catID, Model model)
+
+    @RequestMapping(value = "/filter/category/{id}",method = RequestMethod.GET)
+    public String bookfilter(@PathVariable("id") Long id, Model model)
     {
-        model.addAttribute("books",bookService.findBookByCategory(catID));
+        model.addAttribute("categories", categoryService.listAllCategory());
+        model.addAttribute("books",bookService.findBookByCategory(id));
         return "filter";
     }
 }
